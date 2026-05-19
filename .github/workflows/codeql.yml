@@ -2,7 +2,7 @@ name: CodeQL SAST
 
 on:
   push:
-    branches: [ master ]
+    branches: [ work-space, master ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
