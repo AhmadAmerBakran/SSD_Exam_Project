@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Secure File Upload Portal</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<main class="shell">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">Secure Software Development exam project</p>
+            <h1>Secure File Upload Portal</h1>
+            <p class="lead">Upload files, protect access with server-side sessions, and share files through temporary token-based links.</p>
+        </div>
+        <div id="sessionPanel" class="session-panel hidden">
+            <span id="currentUser"></span>
+            <button id="logoutBtn" class="secondary">Logout</button>
+        </div>
+    </section>
+
+    <section id="message" class="message hidden" aria-live="polite"></section>
+
+    <section id="authView" class="grid two">
+        <form id="registerForm" class="card" novalidate>
+            <h2>Create account</h2>
+            <label>Full name
+                <input id="registerFullName" autocomplete="name" minlength="2" maxlength="120" required />
+            </label>
+            <label>Email
+                <input id="registerEmail" type="email" autocomplete="email" maxlength="254" required />
+            </label>
+            <label>Password
+                <input id="registerPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required />
+            </label>
+            <label>Repeat password
+                <input id="registerConfirmPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required />
+            </label>
+            <ul class="rules" id="passwordRules"></ul>
+            <button type="submit">Register</button>
+        </form>
+
+        <form id="loginForm" class="card" novalidate>
+            <h2>Login</h2>
+            <label>Email
+                <input id="loginEmail" type="email" autocomplete="email" maxlength="254" required />
+            </label>
+            <label>Password
+                <input id="loginPassword" type="password" autocomplete="current-password" required />
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section id="appView" class="hidden">
+        <div class="grid two">
+            <form id="uploadForm" class="card" novalidate>
+                <h2>Upload file</h2>
+                <p class="muted">Allowed: PDF, PNG, JPG/JPEG, TXT. Max size: 5 MB.</p>
+                <input id="fileInput" type="file" accept=".pdf,.png,.jpg,.jpeg,.txt,application/pdf,image/png,image/jpeg,text/plain" required />
+                <button type="submit">Upload securely</button>
+            </form>
+
+            <div class="card">
+                <h2>Security demo</h2>
+                <p class="muted">Files are stored outside the public webroot. Downloads and share links always go through backend authorization or token validation.</p>
+                <button id="refreshBtn" class="secondary">Refresh file list</button>
+            </div>
+        </div>
+
+        <section class="card table-card">
+            <h2>My files</h2>
+            <div id="filesList" class="files-list"></div>
+        </section>
+    </section>
+</main>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
