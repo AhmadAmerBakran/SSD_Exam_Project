@@ -33,7 +33,7 @@ jobs:
         run: dotnet tool install --global CycloneDX
 
       - name: Generate SBOM
-        run: dotnet CycloneDX SSD_Exam_Project.sln -o security-results/sbom -j
+        run: dotnet CycloneDX SSD_Exam_Project.sln -o security-results/sbom -F Json
 
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
